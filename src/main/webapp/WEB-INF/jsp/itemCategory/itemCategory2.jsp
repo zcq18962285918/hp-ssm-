@@ -45,27 +45,15 @@
                 </form>
             </div>
         </div> --%>
-<!--  <result property="id" column="id"  jdbcType="INTEGER"/>
-        <result property="itemId" column="item_id"  jdbcType="INTEGER"/>
-        <result property="userId" column="user_id"  jdbcType="INTEGER"/>
-        <result property="code" column="code"  jdbcType="VARCHAR"/>
-        <result property="addTime" column="addTime"  jdbcType="TIMESTAMP"/>
-        <result property="total" column="total"  jdbcType="VARCHAR"/>
-        <result property="isDelete" column="isDelete"  jdbcType="INTEGER"/>
-        <result property="status" column="status"  jdbcType="INTEGER"/>
-         <result property="addressId" column="addressId"  jdbcType="INTEGER"/>
-         <association property="user" column="user_id" select="com.neusoft.mapper.UserMapper.load"/>
-        <collection property="details" column="id" 
-                ofType="com.neusoft.po.OrderDetail" select="com.neusoft.mapper.OrderDetailMapper.listByOrderId"/> -->
+<
         <div class="result-wrap">
-        
         <div class="result-title">
         <div class="result-title">
                     <div class="result-list">
                         <a href="${ctx}/itemCategory/add2?pid=${obj.pid}"><i class="icon-font"></i>新增二级类目</a>   
                     </div>
                     <div class="result-list">
-                    <a href="${ctx}/itemCategory/findBySql.action"></i>返回上一级</a>
+                    <a href="${ctx}/itemCategory/findByCategory.action"></i>返回上一级</a>
                     </div>
                 </div> 
                 </div> 

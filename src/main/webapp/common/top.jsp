@@ -12,7 +12,7 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="${ctx}/login/mtuichu">退出</a></li>
+                <li><a href="${ctx}/login/mQuit">退出</a></li>
             </ul>
         </div>
     </div>

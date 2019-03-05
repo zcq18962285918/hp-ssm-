@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,7 +46,6 @@
                 <div class="uc-panel">
                     <div class="uc-bigtit">收货地址</div>
                     <div class="uc-panel-bd">
-
 
                             <div class="address-list">
                                 <div class="col col-4">
@@ -117,22 +116,12 @@
                     </div>
                 </div>
             </div>
-            <div class="control-group">
-                <div class="hd vat">
-                    邮政编码：
-                </div>
-                <div class="bd">
-                    <input class="ui-txtin ui-txtin-thin" style="width: 200px;" type="text" name="bm" id="">
-                </div>
-            </div>
             <div class="control-bottom clearfix">
                 <a href="javascript:;" class="fl btn ui-btn-theme bc1">保存</a><a href="" class="fr btn ui-btn cancle">取消</a>
             </div>
         </form>
     </div>
       <div id="addressform2" style="display:none" class="layer-address">
-     
-     
         <form action="${ctx}/address/exUpdate2" method="post" id="update">
         
          <input type="hidden" id="aid" value="" name="id"> 
@@ -160,14 +149,6 @@
                     <div class="mt10">
                         <input class="ui-txtin ui-txtin-thin" style="width: 560px;" type="text" name="area" id="aarea" placeholder="请填写具体地址，不需要重复填写省/市/区">
                     </div>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="hd vat">
-                    邮政编码：
-                </div>
-                <div class="bd">
-                    <input class="ui-txtin ui-txtin-thin" style="width: 200px;" type="text" name="" id="abm">
                 </div>
             </div>
             <div class="control-bottom clearfix">
@@ -232,8 +213,7 @@ $(function(){
 		        //btn: ['按钮一', '按钮二']
 		    });
 		});
-
-	
 });
+
 </script>
-</html> --%>
+</html>

@@ -68,7 +68,7 @@ public class RedisUtil {
      */
     public static void returnResource(final Jedis jedis) {
         if (jedis != null) {
-            jedisPool.returnResource(jedis);
+            jedis.close();
         }
     }
 }

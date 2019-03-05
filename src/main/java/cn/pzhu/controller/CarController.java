@@ -641,7 +641,7 @@ public class CarController extends BaseController {
                 int pre = (int) System.currentTimeMillis();
                 try {
                     //拿到输出流，同时重命名上传的文件
-                    String filePath = request.getRealPath("/upload");
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload");
                     File f = new File(filePath);
                     if (!f.exists()) {
                         f.mkdirs();

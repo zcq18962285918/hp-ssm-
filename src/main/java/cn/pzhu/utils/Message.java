@@ -7,7 +7,6 @@ public class Message {
     private String title;
     private String[] content;
 
-
     public Message() {
         super();
     }

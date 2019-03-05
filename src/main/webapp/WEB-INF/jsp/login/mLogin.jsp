@@ -27,8 +27,6 @@
 		 			</div>
 		 			<input type="submit" value="登录" />
 		 		</div>
-		 		
-		 		
 		 		</form>
 		 	</div>
   </div>

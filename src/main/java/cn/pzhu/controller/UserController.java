@@ -138,31 +138,22 @@ public class UserController extends BaseController {
      * @param response
      * @return
      */
-    @RequestMapping(value = "/findBySql")
-    public String findBySql(User user, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/findByUser")
+    public String findByUser(User user, Model model, HttpServletRequest request, HttpServletResponse response) {
         //分页查询
         String sql = "SELECT * FROM user WHERE 1=1 ";
         if (!isEmpty(user.getUserName())) {
             sql += " and userName like '%" + user.getUserName() + "%'";
         }
-        if (!isEmpty(user.getPassWord())) {
-            sql += " and passWord like '%" + user.getPassWord() + "%'";
-        }
-        if (!isEmpty(user.getPhone())) {
+        /*if (!isEmpty(user.getPhone())) {
             sql += " and phone like '%" + user.getPhone() + "%'";
         }
         if (!isEmpty(user.getRealName())) {
             sql += " and realName like '%" + user.getRealName() + "%'";
         }
-        if (!isEmpty(user.getSex())) {
-            sql += " and sex like '%" + user.getSex() + "%'";
-        }
         if (!isEmpty(user.getAddress())) {
             sql += " and address like '%" + user.getAddress() + "%'";
-        }
-        if (!isEmpty(user.getEmail())) {
-            sql += " and email like '%" + user.getEmail() + "%'";
-        }
+        }*/
         sql += " ORDER BY ID DESC ";
         Pager<User> pagers = userService.findBySqlRerturnEntity(sql);
         model.addAttribute("pagers", pagers);
@@ -629,7 +620,8 @@ public class UserController extends BaseController {
                 int pre = (int) System.currentTimeMillis();
                 try {
                     //拿到输出流，同时重命名上传的文件
-                    String filePath = request.getRealPath("/upload");
+                    //String filePath = request.getRealPath("/upload");
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload");
                     File f = new File(filePath);
                     if (!f.exists()) {
 

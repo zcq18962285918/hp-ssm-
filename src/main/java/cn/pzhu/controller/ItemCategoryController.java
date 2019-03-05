@@ -132,19 +132,13 @@ public class ItemCategoryController extends BaseController {
      * @param response
      * @return
      */
-    @RequestMapping(value = "/findBySql")
-    public String findBySql(ItemCategory itemCategory, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/findByCategory")
+    public String findByCategory(ItemCategory itemCategory, Model model, HttpServletRequest request, HttpServletResponse response) {
         //分页查询
         String sql = "SELECT * FROM item_category WHERE isDelete = 0 and pid is null";
-//        if(!isEmpty(itemCategory.getName())){
-//        	sql += " and name like '%"+itemCategory.getName()+"%'";
-//		}
-//        if(!isEmpty(itemCategory.getPid())){
-//        	sql += " and pid like '%"+itemCategory.getPid()+"%'";
-//		}
-//        if(!isEmpty(itemCategory.getIsDelete())){
-//        	sql += " and isDelete like '%"+itemCategory.getIsDelete()+"%'";
-//		}
+        if(!isEmpty(itemCategory.getName())){
+        	sql += " and name like '%"+itemCategory.getName()+"%'";
+		}
         sql += " ORDER BY ID DESC ";
         Pager<ItemCategory> pagers = itemCategoryService.findBySqlRerturnEntity(sql);
         model.addAttribute("pagers", pagers);
@@ -155,25 +149,19 @@ public class ItemCategoryController extends BaseController {
 
 
     @RequestMapping(value = "/tj")
-    public String tj(ItemCategory itemCategory, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String tj(Model model) {
         //分页查询
         String sql = "SELECT * FROM item_category WHERE isDelete = 0 and pid is null";
         sql += " ORDER BY ID DESC ";
         List<ItemCategory> list = itemCategoryService.listBySqlReturnEntity(sql);
-
         List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
-
-        List<TjDto> res = new ArrayList<TjDto>();
-
         if (!CollectionUtils.isEmpty(list)) {
-
             for (ItemCategory c : list) {
                 TjDto td = new TjDto();
                 int tot = 0;
                 List<Item> listBySqlReturnEntity = itemService.listBySqlReturnEntity("SELECT * FROM item WHERE 1=1 and isDelete =0 and category_id_one=" + c.getId());
 
                 if (!CollectionUtils.isEmpty(listBySqlReturnEntity)) {
-
                     for (Item i : listBySqlReturnEntity) {
                         tot += i.getGmNum();
                     }
@@ -183,9 +171,7 @@ public class ItemCategoryController extends BaseController {
                 map.put("value", tot);
                 maps.add(map);
             }
-
         }
-
         //存储查询条件
         model.addAttribute("maps", maps);
         return "itemCategory/tj";
@@ -284,7 +270,7 @@ public class ItemCategoryController extends BaseController {
         itemCategory.setIsDelete(0);
         itemCategoryService.insert(itemCategory);
 
-        return "redirect:/itemCategory/findBySql.action";
+        return "redirect:/itemCategory/findByCategory.action";
     }
 
 
@@ -329,7 +315,7 @@ public class ItemCategoryController extends BaseController {
         //itemCategoryService.updateById(itemCategory);
 
 
-        return "redirect:/itemCategory/findBySql.action";
+        return "redirect:/itemCategory/findByCategory.action";
     }
 
     @RequestMapping(value = "/exUpdate2")
@@ -431,7 +417,7 @@ public class ItemCategoryController extends BaseController {
         }
         itemCategoryService.updateById(load);
 
-        return "redirect:/itemCategory/findBySql.action";
+        return "redirect:/itemCategory/findByCategory.action";
     }
 
 
@@ -704,7 +690,7 @@ public class ItemCategoryController extends BaseController {
                 int pre = (int) System.currentTimeMillis();
                 try {
                     //拿到输出流，同时重命名上传的文件
-                    String filePath = request.getRealPath("/upload");
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload");
                     File f = new File(filePath);
                     if (!f.exists()) {
                         f.mkdirs();

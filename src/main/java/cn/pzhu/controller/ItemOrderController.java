@@ -139,22 +139,20 @@ public class ItemOrderController extends BaseController {
     /**
      * 分页查询 返回list对象(通过对By Sql)
      *
-     * @param request
-     * @param response
      * @return
      */
-    @RequestMapping(value = "/findBySql")
-    public String findBySql(ItemOrder itemOrder, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/findByOrder")
+    public String findByOrder(ItemOrder itemOrder, Model model) {
         //分页查询
         String sql = "SELECT * FROM item_order WHERE 1=1 ";
-        if (!isEmpty(itemOrder.getItemId())) {
+        if (!isEmpty(itemOrder.getCode())) {
+            sql += " and code like '%" + itemOrder.getCode() + "%'";
+        }
+       /* if (!isEmpty(itemOrder.getItemId())) {
             sql += " and itemId like '%" + itemOrder.getItemId() + "%'";
         }
         if (!isEmpty(itemOrder.getUserId())) {
             sql += " and userId like '%" + itemOrder.getUserId() + "%'";
-        }
-        if (!isEmpty(itemOrder.getCode())) {
-            sql += " and code like '%" + itemOrder.getCode() + "%'";
         }
         if (!isEmpty(itemOrder.getAddTime())) {
             sql += " and addTime like '%" + itemOrder.getAddTime() + "%'";
@@ -162,12 +160,9 @@ public class ItemOrderController extends BaseController {
         if (!isEmpty(itemOrder.getTotal())) {
             sql += " and total like '%" + itemOrder.getTotal() + "%'";
         }
-        if (!isEmpty(itemOrder.getIsDelete())) {
-            sql += " and isDelete like '%" + itemOrder.getIsDelete() + "%'";
-        }
         if (!isEmpty(itemOrder.getStatus())) {
             sql += " and status like '%" + itemOrder.getStatus() + "%'";
-        }
+        }*/
         sql += " ORDER BY ID DESC ";
         Pager<ItemOrder> pagers = itemOrderService.findBySqlRerturnEntity(sql);
         model.addAttribute("pagers", pagers);
@@ -789,7 +784,7 @@ public class ItemOrderController extends BaseController {
                 int pre = (int) System.currentTimeMillis();
                 try {
                     //拿到输出流，同时重命名上传的文件
-                    String filePath = request.getRealPath("/upload");
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload");
                     File f = new File(filePath);
                     if (!f.exists()) {
                         f.mkdirs();

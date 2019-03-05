@@ -174,14 +174,15 @@ public class ItemController extends BaseController {
      * @param response
      * @return
      */
-    @RequestMapping(value = "/findBySql")
-    public String findBySql(Item item, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/findByItem")
+    public String findByItem(Item item, Model model, HttpServletRequest request, HttpServletResponse response) {
         //分页查询
         String sql = "SELECT * FROM item WHERE 1=1 and isDelete =0  ";
         if (!isEmpty(item.getName())) {
             sql += " and name like '%" + item.getName() + "%'";
         }
-        if (!isEmpty(item.getPrice())) {
+        System.out.println(item.getName() + "---" + item.getZk());
+        /*if (!isEmpty(item.getPrice())) {
             sql += " and price like '%" + item.getPrice() + "%'";
         }
         if (!isEmpty(item.getScNum())) {
@@ -190,39 +191,15 @@ public class ItemController extends BaseController {
         if (!isEmpty(item.getGmNum())) {
             sql += " and gmNum like '%" + item.getGmNum() + "%'";
         }
-        if (!isEmpty(item.getUrl1())) {
-            sql += " and url1 like '%" + item.getUrl1() + "%'";
-        }
-        if (!isEmpty(item.getUrl2())) {
-            sql += " and url2 like '%" + item.getUrl2() + "%'";
-        }
-        if (!isEmpty(item.getUrl3())) {
-            sql += " and url3 like '%" + item.getUrl3() + "%'";
-        }
-        if (!isEmpty(item.getUrl4())) {
-            sql += " and url4 like '%" + item.getUrl4() + "%'";
-        }
-        if (!isEmpty(item.getUrl5())) {
-            sql += " and url5 like '%" + item.getUrl5() + "%'";
-        }
         if (!isEmpty(item.getMs())) {
             sql += " and ms like '%" + item.getMs() + "%'";
-        }
-        if (!isEmpty(item.getPam1())) {
-            sql += " and pam1 like '%" + item.getPam1() + "%'";
-        }
-        if (!isEmpty(item.getPam2())) {
-            sql += " and pam2 like '%" + item.getPam2() + "%'";
-        }
-        if (!isEmpty(item.getPam3())) {
-            sql += " and pam3 like '%" + item.getPam3() + "%'";
         }
         if (!isEmpty(item.getType())) {
             sql += " and type like '%" + item.getType() + "%'";
         }
         if (!isEmpty(item.getIsDelete())) {
             sql += " and isDelete like '%" + item.getIsDelete() + "%'";
-        }
+        }*/
         sql += " ORDER BY ID DESC ";
         Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
         model.addAttribute("pagers", pagers);
@@ -341,7 +318,6 @@ public class ItemController extends BaseController {
         return "item/item";
     }
 
-    /**********************************【增删改】******************************************************/
 
     /**
      * 跳至添加页面
@@ -376,7 +352,6 @@ public class ItemController extends BaseController {
      */
     @RequestMapping(value = "/exAdd")
     public String exAdd(Item item, @RequestParam("file") CommonsMultipartFile[] files, HttpServletRequest request, Model model) throws IllegalStateException, IOException {
-
 
         if (files.length > 0) {
             // 0 1 2 3 4
@@ -421,7 +396,7 @@ public class ItemController extends BaseController {
         ItemCategory byId = itemCategoryService.getById(item.getCategoryIdTwo());
         item.setCategoryIdOne(byId.getPid());
         itemService.insert(item);
-        return "redirect:/item/findBySql.action";
+        return "redirect:/item/findByItem.action";
     }
 
     /**
@@ -490,14 +465,11 @@ public class ItemController extends BaseController {
             }
         }
 
-
         itemService.updateById(item);
 
         Item byId2 = itemService.getById(item.getId());
-        //2.通过主键id修改
-        //itemService.updateById(item);
 
-        return "redirect:/item/findBySql.action";
+        return "redirect:/item/findByItem.action";
     }
 
     /**
@@ -586,7 +558,7 @@ public class ItemController extends BaseController {
         load.setIsDelete(1);
         itemService.updateById(load);
 
-        return "redirect:/item/findBySql.action";
+        return "redirect:/item/findByItem.action";
     }
 
     // --------------------------------------- 华丽分割线 ------------------------------
@@ -957,7 +929,7 @@ public class ItemController extends BaseController {
                 int pre = (int) System.currentTimeMillis();
                 try {
                     //拿到输出流，同时重命名上传的文件
-                    String filePath = request.getRealPath("/upload");
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload");
                     File f = new File(filePath);
                     if (!f.exists()) {
                         f.mkdirs();

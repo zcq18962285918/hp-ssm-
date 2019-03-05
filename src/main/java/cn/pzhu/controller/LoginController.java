@@ -152,9 +152,8 @@ public class LoginController extends BaseController {
     }
 
 
-    @RequestMapping("/mtuichu")
-    public String mtuichu(HttpServletRequest request) {
-        //request.getSession().invalidate();
+    @RequestMapping("/mQuit")
+    public String mQuit() {
         return "login/mLogin";
     }
 
@@ -167,7 +166,7 @@ public class LoginController extends BaseController {
     public String toLogin(Manage manage, HttpServletRequest request, HttpServletResponse response) {
         Manage byEntity = manageService.getByEntity(manage);
         if (byEntity == null) {
-            return "redirect:/login/mtuichu";
+            return "redirect:/login/mQuit";
         } else {
 			/*request.getSession().setAttribute("role", 1);
 			request.getSession().setAttribute("username", byEntity.getUserName());

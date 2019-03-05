@@ -39,18 +39,6 @@
 				</div>
 			</div>
 
-
-			<!--   private String name;
-	private String price;
-	private Integer scNum;收藏数
-	private Integer gmNum;购买数
-	private String url1;
-	private String url2;
-	private String url3;
-	private String url4;
-	private String url5;
-	private String ms;
-	 -->
 			<div class="result-wrap">
 				<div class="result-content">
 					<form action="${ctx}/item/exUpdate" method="post" id="myform"

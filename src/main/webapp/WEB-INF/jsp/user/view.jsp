@@ -15,10 +15,6 @@
 </head>
 <body>
 
-
-
-
-
  <%@ include file="/common/utop.jsp" %>
  
 <!--导航条-->
