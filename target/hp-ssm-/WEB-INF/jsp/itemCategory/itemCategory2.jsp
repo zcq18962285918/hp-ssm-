@@ -45,7 +45,7 @@
                 </form>
             </div>
         </div> --%>
-<
+
         <div class="result-wrap">
         <div class="result-title">
         <div class="result-title">
@@ -82,7 +82,7 @@
         <td colspan="8">
 		        <div class="pagelist">
 		        <!-- 分页开始 -->
-					      <pg:pager  url="${ctx}/itemCategory/findBySql" maxIndexPages="5" items="${pagers.total}"  maxPageItems="15" export="curPage=pageNumber" >
+					      <pg:pager  url="${ctx}/itemCategory/findBySql2?pid=${data.id}" maxIndexPages="5" items="${pagers.total}"  maxPageItems="15" export="curPage=pageNumber" >
 					        
 							<pg:last>  
 								共${pagers.total}记录,共${pageNumber}页,  
