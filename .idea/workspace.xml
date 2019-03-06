@@ -9,6 +9,8 @@
     <list default="true" id="6617237f-4b89-4374-8a17-f499ea3e79c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/res.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/res.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hp-ssm-/WEB-INF/jsp/itemCategory/itemCategory2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hp-ssm-/WEB-INF/jsp/itemCategory/itemCategory2.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/WebRoot/WEB-INF/classes/" />
@@ -25,7 +27,7 @@
     <session id="-173822372">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -50,7 +52,7 @@
           <entry key="java" value="368" />
           <entry key="jpg" value="49" />
           <entry key="js" value="2" />
-          <entry key="jsp" value="81" />
+          <entry key="jsp" value="85" />
           <entry key="phtml" value="1" />
           <entry key="png" value="70" />
           <entry key="pom" value="1" />
@@ -67,7 +69,7 @@
           <entry key="HTML" value="3" />
           <entry key="Image" value="121" />
           <entry key="JAVA" value="368" />
-          <entry key="JSP" value="81" />
+          <entry key="JSP" value="85" />
           <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="11" />
@@ -80,7 +82,7 @@
         <counts>
           <entry key="css" value="20" />
           <entry key="java" value="340" />
-          <entry key="jsp" value="206" />
+          <entry key="jsp" value="230" />
           <entry key="properties" value="9" />
           <entry key="xml" value="820" />
         </counts>
@@ -89,7 +91,7 @@
         <counts>
           <entry key="CSS" value="20" />
           <entry key="JAVA" value="340" />
-          <entry key="JSP" value="206" />
+          <entry key="JSP" value="230" />
           <entry key="Properties" value="9" />
           <entry key="XML" value="820" />
         </counts>
@@ -98,29 +100,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/shoplist.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1311" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/view.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1311" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/ressuccess.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/res.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="65" column="75" lean-forward="true" selection-start-line="65" selection-start-column="75" selection-end-line="65" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="82" column="38" lean-forward="true" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/pzhu/controller/ItemCategoryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="197" column="46" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="46" />
+            <state relative-caret-position="-115">
+              <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -147,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/sqlMapConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/pzhu/mapper/AddressMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/pzhu/base/BaseDao.java" />
@@ -198,6 +200,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/pzhu/controller/ItemController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/common/menu.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/res.jsp" />
       </list>
     </option>
   </component>
@@ -230,7 +233,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-17" />
     <option name="y" value="4" />
     <option name="width" value="1616" />
@@ -428,17 +431,7 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="item" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hpshopping" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hp-ssm-" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="itemCategory" type="462c0819:PsiDirectoryNode" />
+              <item name="itemOrder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hpshopping" type="b2602c69:ProjectViewProjectNode" />
@@ -604,12 +597,12 @@
       <workItem from="1551756292867" duration="2385000" />
       <workItem from="1551762749305" duration="2355000" />
       <workItem from="1551765396262" duration="634000" />
-      <workItem from="1551839221024" duration="1321000" />
+      <workItem from="1551839221024" duration="5321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65627000" />
+    <option name="totallyTimeSpent" value="69627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -634,7 +627,7 @@
       <window_info id="Web" order="7" sideWeight="0.5006974" side_tool="true" weight="0.24100257" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30822873" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35285914" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35285914" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37796375" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -668,18 +661,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/img/pay/zgyh.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/img/pay/zsyh.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/img/login/login-bg.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/img/login/pwd.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/img/login/sina.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -900,24 +881,44 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/add2.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/pzhu/controller/ItemCategoryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="197" column="46" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="46" />
+        <state relative-caret-position="852">
+          <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory2.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/pzhu/controller/ItemCategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="82" column="38" lean-forward="true" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+        <state relative-caret-position="46">
+          <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/itemCategory/itemCategory.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="530">
           <caret line="65" column="75" lean-forward="true" selection-start-line="65" selection-start-column="75" selection-end-line="65" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/shoplist.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1311" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/item/view.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1311" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/ressuccess.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/res.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
         </state>
       </provider>
     </entry>
