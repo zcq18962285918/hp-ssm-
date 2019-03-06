@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 <div class="width100">
 	<div class="width1200 center_yh hidden_yh" style="height:181px">
     		<a href="#" class="left_yh"><img src="${ctx}/resource/images/logo3.png" style="height: 80px;padding-top: 30px"></a>
@@ -28,6 +27,7 @@
 	<form action="${ctx}/login/toRes" method="post">
         <div class="width100 hidden_yh">
         	<div class="center_yh hidden_yh" style="width:475px;margin-bottom:40px;">
+               <p style="color: red;text-align: center">${msg}</p>
             	<span style="margin-right:40px;height:42px;line-height:42px;width:100px" class="left_yh block_yh tright">用户名:</span>
                 <input type="text"  name="userName"  placeholder="请输入您的用户名" style="border:1px solid #c9c9c9;width:292px;height:42px;font-size:16px;text-indent:22px;" class="left_yh" >
             </div>
@@ -44,7 +44,7 @@
             	<span style="margin-right:40px;height:42px;line-height:42px;width:100px" class="left_yh block_yh tright">邮箱:</span>
                 <input type="email" name="email" placeholder="请输入邮箱" style="border:1px solid #c9c9c9;width:292px;height:42px;font-size:16px;text-indent:22px;" class="left_yh">
             </div>
-            <p class="font14 c_66" style="text-indent:503px;margin-top:30px;"><input type="checkbox">我已阅读并同意<a href="#" class="red">«会员注册协议»</a>和<a href="#" class="red">«隐私保护政策»</a></p>
+           <%-- <p class="font14 c_66" style="text-indent:503px;margin-top:30px;"><input type="checkbox">我已阅读并同意<a href="#" class="red">«会员注册协议»</a>和<a href="#" class="red">«隐私保护政策»</a></p>--%>
             <input type="submit" value="提交" class="ipt_tj" style="width:295px;height:44px;margin-left:505px;">
         </div>
         
@@ -53,8 +53,6 @@
 </div>
     
  <%@ include file="/common/ufooter.jsp" %>
-
-
 
 </body>
 </html>

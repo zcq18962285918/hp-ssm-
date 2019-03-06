@@ -62,11 +62,22 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping("/toRes")
-    public String toRes(User u) {
-        userService.insert(u);
-        return "login/uLogin";
+    public String toRes(User u, Model model) {
+        if (!"".equals(u.getUserName()) && !"".equals(u.getPassWord())) {
+            User user = userService.selectByUsername(u.getUserName());
+            if (user == null) {
+                userService.insert(u);
+                model.addAttribute("user", u);
+                return "login/uLogin";
+            } else {
+                model.addAttribute("msg", "用户名已存在");
+                return "login/res";
+            }
+        }else {
+            model.addAttribute("msg","请输入用户名和密码");
+            return "login/res";
+        }
     }
-
 
     @RequestMapping("/uIndex")
     public String uIndex(Model model, Item item, String prices, Integer xl, HttpServletRequest request) {
@@ -167,23 +178,17 @@ public class LoginController extends BaseController {
         Manage byEntity = manageService.getByEntity(manage);
         if (byEntity == null) {
             return "redirect:/login/mQuit";
-        } else {
-			/*request.getSession().setAttribute("role", 1);
-			request.getSession().setAttribute("username", byEntity.getUserName());
-			request.getSession().setAttribute("userId", byEntity.getId());*/
         }
         return "login/mIndex";
     }
 
-    //
-//	
     @RequestMapping("/utoLogin")
     public String utoLogin(User manage, HttpServletRequest request, HttpServletResponse response) {
         User byEntity = userService.getByEntity(manage);
-        if(byEntity == null){
+        if (byEntity == null) {
             request.getSession().setAttribute("error", "用户名或密码错误");
             return "redirect:/login/uLogin.action";
-        }else{
+        } else {
             request.getSession().setAttribute("role", 2);
             request.getSession().setAttribute("username", byEntity.getUserName());
             request.getSession().setAttribute("userId", byEntity.getId());

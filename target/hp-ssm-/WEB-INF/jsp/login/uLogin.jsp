@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="width100 hidden_yh"
-     style="height:573px;background:url(${ctx}/resource/user/images/bj.jpg) no-repeat center">
+     style="height:573px;background:url(${ctx}/resource/images/95.jpg) no-repeat center">
     <div class="width1200 center_yh hidden_yh" style="margin-top: 70px">
         <div class="right_yh bj_fff" style="width: 408px; height: 438px;">
             <h3 class="tcenter font30 c_33"
@@ -39,14 +39,14 @@
                          style="height: 44px; border: 1px solid #c9c9c9; margin-bottom: 34px;">
                         <img src="${ctx}/resource/user/images/rw.jpg" class="left_yh"
                              width="42" height="42"> <input type="text"
-                                                            placeholder="请输入用户名" name="userName" value="zl"
+                                                            placeholder="请输入用户名" name="userName" value="${user.userName}"
                                                             style="border: 0; width: 292px; height: 42px; font-size: 16px; text-indent: 22px;">
                     </div>
                     <div class="width100 box-sizing hidden_yh"
                          style="height: 44px; border: 1px solid #c9c9c9; margin-bottom: 14px;">
                         <img src="${ctx}/resource/user/images/pass.jpg" class="left_yh"
                              width="42" height="42"> <input type="password"
-                                                            placeholder="请输入密码" name="passWord" value="1"
+                                                            placeholder="请输入密码" name="passWord" value="${user.passWord}"
                                                             style="border: 0; width: 292px; height: 42px; font-size: 16px; text-indent: 22px;">
                     </div>
                     <p class="width100 tright font16" style="margin-bottom: 26px;">
