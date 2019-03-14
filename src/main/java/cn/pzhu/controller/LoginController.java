@@ -112,9 +112,6 @@ public class LoginController extends BaseController {
 		
 		model.addAttribute("lbs",parseArray);*/
 
-        // 1-500
-
-
         //热销
         List<Item> listBySqlReturnEntity = itemService.listBySqlReturnEntity("SELECT * FROM item WHERE 1=1 and isDelete =0 order by gmNum desc limit 0,10");
         model.addAttribute("rxs", listBySqlReturnEntity);

@@ -15,8 +15,6 @@
 </head>
 <body>
 
-
-
  <%@ include file="/common/utop.jsp" %>
  
 <!--导航条-->
@@ -29,7 +27,6 @@
         </div>
     </div>
 </div>
-
 
 <!--当前位置-->
 <div class="width1200 center_yh hidden_yh font14" style="height:40px;line-height:40px;">
@@ -109,9 +106,8 @@
 	                    data : {  
 	                        "password" : xin  
 	                    },//数据，这里使用的是Json格式进行传输  
-	                    success : function(result) {//返回数据根据结果进行相应的处理  
-	                    	var re = JSON.parse(result)
-	                    	if (re.res == 0){
+	                    success : function(result) {//返回数据根据结果进行相应的处理
+	                    	if (result == 0){
 	                    		alert("请登陆");
 	                    		top.location.href = "${ctx}/login/uLogin";
 	                    	}else{

@@ -15,8 +15,6 @@
 </head>
 <body>
 
-
-
  <%@ include file="/common/utop.jsp" %>
  
 <!--导航条-->
@@ -29,7 +27,6 @@
         </div>
     </div>
 </div>
-
 
 <!--当前位置-->
 <div class="width1200 center_yh hidden_yh font14" style="height:40px;line-height:40px;">
@@ -44,11 +41,8 @@
         <p class="font18 c_99">订单编号${code}<a href="${ctx}/login/uIndex" class="red onHover">&nbsp;继续去逛逛»</a></p>
     </div>
 </div>
-    
-    
+
  <%@ include file="/common/ufooter.jsp" %>
-
-
 
 </body>
 </html>

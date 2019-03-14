@@ -31,7 +31,7 @@
 </div>
 <div class="width100 hidden_yh" >
 	<div class="width1200 center_yh hidden_yh" style="margin-bottom: -0px">
-    	<a href="#" class="block_yh left_yh" style="margin-top:10px;"><img src="${ctx}/resource/images/logo3.png" style="height:70px"></a>
+    	<a href="${ctx}/login/uIndex" class="block_yh left_yh" style="margin-top:10px;"><img src="${ctx}/resource/images/logo3.png" style="height:70px"></a>
         <div class="right_yh" style="height:28px;width:316px;border:2px solid #dd4545;margin-top:50px;">
         	<form action="${ctx}/item/shoplist" method="post">
                 <input type="text" placeholder="关键词查询" class="searCh" name="condition" value="${condition }">

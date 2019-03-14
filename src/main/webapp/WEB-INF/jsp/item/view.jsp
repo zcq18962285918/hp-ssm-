@@ -44,9 +44,7 @@
 	<div class="left_yh" style="width:350px;height:420px;">
 	
 	<input type="hidden" id="id" value="${obj.id}">
-	
-	
-	
+
     	<script src="${ctx}/resource/user/js/163css.js"></script>
         <script src="${ctx}/resource/user/js/lib.js"></script>
 		<div id="preview">

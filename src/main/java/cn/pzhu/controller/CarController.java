@@ -36,7 +36,6 @@ public class CarController extends BaseController {
     @Autowired
     private CarService carService;
 
-
     /*********************************查询列表【不分页】***********************************************/
 
     /**

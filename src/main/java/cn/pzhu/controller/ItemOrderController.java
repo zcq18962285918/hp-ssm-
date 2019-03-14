@@ -224,6 +224,18 @@ public class ItemOrderController extends BaseController {
         return "itemOrder/my";
     }
 
+    /**
+     * 7天无条件退货
+     */
+    @RequestMapping(value = "/th")
+    public String thById(ItemOrder itemOrder, Model model, HttpServletRequest request, HttpServletResponse response){
+        //等到系统当前时间
+        //计算时间差
+        //判断
+        //返回信息给后台 成功后台退货执行失败返回
+        //
+        return null;
+    }
 
     /**
      * 分页查询 返回list对象(通过Map)

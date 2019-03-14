@@ -314,7 +314,6 @@ public class ItemCategoryController extends BaseController {
         //2.通过主键id修改
         //itemCategoryService.updateById(itemCategory);
 
-
         return "redirect:/itemCategory/findByCategory.action";
     }
 
@@ -326,17 +325,14 @@ public class ItemCategoryController extends BaseController {
         //itemCategoryService.updateById(itemCategory);
 
         //同步redis
-        redisUpdate();
-
+        //redisUpdate();
         return "redirect:/itemCategory/findBySql2.action?pid=" + itemCategory.getPid();
     }
-
 
     /**
      * 当有添加修改删除的时候，就需要重新设置一下redis
      */
     public void redisUpdate() {
-
 
         System.out.println("======================================================");
         System.out.println("修改redis----");
