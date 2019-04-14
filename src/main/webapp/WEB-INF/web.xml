@@ -40,7 +40,7 @@
         <!-- 配置springMVC需要加载的配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springMVC.xml</param-value>
+            <param-value>classpath:springmvc.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

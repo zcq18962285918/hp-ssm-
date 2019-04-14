@@ -212,10 +212,10 @@ public class OrderDetailController extends BaseController {
     @RequestMapping(value = "/th")
     public String th(Integer id, Model model) {
         OrderDetail obj = orderDetailService.load(id);
-        obj.setStatus(1);
+        obj.setStatus(2);
         orderDetailService.updateById(obj);
         model.addAttribute("obj", obj);
-        return "redirect:/itemOrder/my";
+        return "redirect:/orderDetail/ulist";
     }
 
     /**

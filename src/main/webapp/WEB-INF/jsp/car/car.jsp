@@ -290,14 +290,14 @@
             data: JSON.stringify(arr),
             contentType: "application/json",
             success: function (result) {//返回数据根据结果进行相应的处理
-                var re = JSON.parse(result)
-                if (re.res == 0) {
+                console.log(result);
+                if (result.res == 0) {
                     alert("请登陆");
                     window.location.href = "${ctx}/login/uLogin";
-                } else if (re.res == 2) {
+                } else if (result.res == 2) {
                     alert("请编辑地址");
                 } else {
-                    window.location.href = "${ctx}/car/view?code=" + re.code;
+                    window.location.href = "${ctx}/car/view?code=" + result.code;
                 }
             }
         });

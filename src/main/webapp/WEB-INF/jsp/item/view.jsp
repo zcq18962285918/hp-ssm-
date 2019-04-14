@@ -235,13 +235,12 @@ $(function(){
 		   $.ajax({  
             type : "POST",  //提交方式  
             url : "${ctx}/car/exAdd?itemId="+id+"&num="+num,//路径  
-            success : function(result) {//返回数据根据结果进行相应的处理  
-            	var re = JSON.parse(result)
-            	if (re.res == 0){
+            success : function(result) {//返回数据根据结果进行相应的处理
+            	if (result == 0){
             		alert("请登陆");
             		window.location.href = "${ctx}/login/uLogin";
             	}else{
-            		window.location.href = "${ctx}/car/findBySql";
+                        window.location.href = "${ctx}/car/findBySql";
             	}
             }  
         }); 
@@ -256,9 +255,8 @@ $(function(){
 		   $.ajax({  
             type : "POST",  //提交方式  
             url : "${ctx}/car/js2?itemId="+id+"&num="+num,//路径  
-            success : function(result) {//返回数据根据结果进行相应的处理  
-            	var re = JSON.parse(result)
-            	if (re.res == 0){
+            success : function(result) {//返回数据根据结果进行相应的处理
+            	if (result.res == 0){
             		alert("请登陆");
             		window.location.href = "${ctx}/login/uLogin";
             	}else{

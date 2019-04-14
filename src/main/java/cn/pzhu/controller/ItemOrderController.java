@@ -17,6 +17,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -214,6 +215,12 @@ public class ItemOrderController extends BaseController {
         //待评价
         List<ItemOrder> dpj = itemOrderService.listBySqlReturnEntity(sql5);
 
+        //退货  
+        /*String sql6 = "SELECT * FROM order_detail WHERE status = 2 and user_id=" + userId;
+        sql6 += " ORDER BY ID DESC ";
+        
+        List<OrderDetail> th = orderDetailService.listBySqlReturnEntity(sql6);*/
+
         model.addAttribute("all", all);
         model.addAttribute("dfh", dfh);
         model.addAttribute("yqx", yqx);
@@ -228,13 +235,29 @@ public class ItemOrderController extends BaseController {
      * 7天无条件退货
      */
     @RequestMapping(value = "/th")
-    public String thById(ItemOrder itemOrder, Model model, HttpServletRequest request, HttpServletResponse response){
-        //等到系统当前时间
+    public String thById(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //得到系统当前时间
+        Long time = System.currentTimeMillis();
+        String sql = "select * from order_detail where item_id=" + id;
+        OrderDetail orderDetail = orderDetailService.getBySqlReturnEntity(sql);
+        ItemOrder itemOrder = itemOrderService.getById(orderDetail.getOrderId());
+        Date date = itemOrder.getAddTime();
         //计算时间差
+        Long addTime = date.getTime();
+        Long t = time - addTime;
+
         //判断
-        //返回信息给后台 成功后台退货执行失败返回
-        //
-        return null;
+        if (t > 7 * 24 * 60 * 60 * 1000) {
+            //JOptionPane.showMessageDialog(null, "超出退货期限", null, JOptionPane.PLAIN_MESSAGE);
+
+        } else {
+            //后台执行退货
+            orderDetail.setStatus(1);
+            orderDetailService.updateById(orderDetail);
+            
+        }
+
+        return "redirect:/itemOrder/my";
     }
 
     /**
@@ -326,7 +349,7 @@ public class ItemOrderController extends BaseController {
         obj.setStatus(2);
         itemOrderService.updateById(obj);
         model.addAttribute("obj", obj);
-        return "redirect:/itemOrder/findBySql";
+        return "redirect:/itemOrder/findByOrder";
     }
 
 
@@ -344,7 +367,6 @@ public class ItemOrderController extends BaseController {
     @RequestMapping(value = "/exAdd")
     @ResponseBody
     public String exAdd(@RequestBody List<CarDto> list, Model model, HttpServletRequest request, HttpServletResponse response) {
-
 
         //itemOrderService.insert(itemOrder);
         Object attribute = request.getSession().getAttribute("userId");
@@ -377,7 +399,9 @@ public class ItemOrderController extends BaseController {
         order.setAddTime(new Date());
         itemOrderService.insert(order);
         //删除购车
-        if (!CollectionUtils.isEmpty(ids)) {
+        if (!CollectionUtils.isEmpty(ids))
+
+        {
             for (CarDto c : list) {
                 Car load = carService.load(c.getId());
                 OrderDetail de = new OrderDetail();
@@ -505,11 +529,9 @@ public class ItemOrderController extends BaseController {
         //ItemOrder load = itemOrderService.load(id);
         //load.setIsDelete(1);
         //itemOrderService.update(load);
-        return "redirect:/itemOrder/findBySql.action";
+        return "redirect:/itemOrder/findByOrder.action";
     }
 
-    // --------------------------------------- 华丽分割线 ------------------------------
-    // --------------------------------------- 【下面是ajax操作的方法。】 ------------------------------
 
     /*********************************查询列表【不分页】***********************************************/
 
