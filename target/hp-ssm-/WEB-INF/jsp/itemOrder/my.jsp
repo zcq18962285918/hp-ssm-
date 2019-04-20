@@ -366,7 +366,6 @@
                                             <a href="${ctx}/itemOrder/pj?id=${chil.itemId}"
                                                class="onfff block_yh tcenter font16 onHoverr"
                                                style="margin-top:10px;padding:6px;">去评价</a><br>
-                                           ${chil.status}
                                             <c:if test="${chil.status == 0}">
                                             <a href="${ctx}/itemOrder/th?id=${chil.itemId}"
                                                class="onfff block_yh tcenter font16 onHoverr"

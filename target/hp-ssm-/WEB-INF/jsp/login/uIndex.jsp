@@ -25,7 +25,7 @@
     	<div class="left_yh Selected" style="width:230px;height:45px;" id="hiddenShow">
         	<!--头部的图标-->
         	<img src="${ctx}/resource/user/images/cd.png" class="left_yh" style="margin-left:24px;">
-            <span class="block_yh left_yh fff" style="height:45px;line-height:44px;margin-left:10px;">阶段分类</span>
+            <span class="block_yh left_yh fff" style="height:45px;line-height:44px;margin-left:10px;">商品分类</span>
             <!--下面的导航展开部分-->
             <div class="downSlide">
             

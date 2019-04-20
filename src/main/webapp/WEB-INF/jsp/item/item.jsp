@@ -93,7 +93,7 @@
                                 <div class="pagelist">
                                     <!-- 分页开始 -->
                                     <pg:pager url="${ctx}/item/findByItem" maxIndexPages="5"
-                                              items="${pagers.total}" maxPageItems="10"
+                                              items="${pagers.total}" maxPageItems="15"
                                               export="curPage=pageNumber">
 
                                         <pg:last>

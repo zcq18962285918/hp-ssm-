@@ -75,7 +75,7 @@
                                 <div class="pagelist">
                                     <!-- 分页开始 -->
                                     <pg:pager url="${ctx}/itemCategory/findByCategory" maxIndexPages="5"
-                                              items="${pagers.total}" maxPageItems="10" export="curPage=pageNumber">
+                                              items="${pagers.total}" maxPageItems="15" export="curPage=pageNumber">
 
                                         <pg:last>
                                             共${pagers.total}记录,共${pageNumber}页,

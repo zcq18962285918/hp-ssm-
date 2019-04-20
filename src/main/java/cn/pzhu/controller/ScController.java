@@ -207,20 +207,22 @@ public class ScController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/exAdd")
+    @ResponseBody
     public String exAdd(Sc sc, Model model, HttpServletRequest request, HttpServletResponse response) {
         Object attribute = request.getSession().getAttribute("userId");
-        if (attribute == null) {
-            return "redirect:/login/uLogin";
-        }
         JSONObject js = new JSONObject();
+        if (attribute == null) {
+            js.put("res", 0);
+            return js.toJSONString();
+        }
         Integer userId = Integer.valueOf(attribute.toString());
         sc.setUserId(userId);
         scService.insert(sc);
+        js.put("res", 1);
         Item load = itemService.load(sc.getItemId());
         load.setScNum(load.getScNum() + 1);
         itemService.updateById(load);
-
-        return "redirect:/sc/findBySql.action";
+        return js.toJSONString();
     }
 
 

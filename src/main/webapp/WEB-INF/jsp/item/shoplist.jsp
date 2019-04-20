@@ -74,7 +74,7 @@
 
                 </p>
                 <div class="wCa">
-                    <a href="${ctx}/sc/exAdd?itemId=${data.id}" class="fav">
+                    <a href="javaScript:void(0)" onclick="addSc('${data.id}')" class="fav">
                         <div class="wCa1">
                             <b><img src="${ctx}/resource/user/images/star.png"></b>
                             <font>收藏</font>
@@ -143,6 +143,22 @@
     $(".wCa div").click(function () {
         $(this).addClass("on")
     })
+    
+    function addSc(id){
+        var num = 1;
+        $.ajax({
+            type: "POST",  //提交方式
+            url: "${ctx}/sc/exAdd?itemId=" + id + "&num=" + num,//路径
+            success: function (result) {//返回数据根据结果进行相应的处理
+                if (result.res == 0) {
+                    alert("请登陆");
+                    window.location.href = "${ctx}/login/uLogin";
+                } else {
+                    alert("收藏成功,等你来哟");
+                }
+            }
+        });
+    }
 
     function addcar(id) {
         var num = 1;
@@ -150,11 +166,11 @@
             type: "POST",  //提交方式
             url: "${ctx}/car/exAdd?itemId=" + id + "&num=" + num,//路径
             success: function (result) {//返回数据根据结果进行相应的处理
-                if (result == 0) {
+                if (result.res == 0) {
                     alert("请登陆");
                     window.location.href = "${ctx}/login/uLogin";
                 } else {
-                    window.location.href = "${ctx}/car/findBySql";
+                    alert("添加成功,在购物车等你哟");
                 }
             }
         });
