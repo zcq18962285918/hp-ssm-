@@ -3,8 +3,9 @@ package cn.pzhu.po;
 import java.io.Serializable;
 
 public class OrderDetail implements Serializable {
-    private static final long serialVersionUID = 3148176768559230877L;
 
+
+    private static final long serialVersionUID = -8141746136854171981L;
     /**
      * @Fields Id : id
      */
@@ -90,10 +91,7 @@ public class OrderDetail implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetail [id=" + id + ",itemId=" + itemId + ",orderId=" + orderId + ",status=" + status + "]";
-    }
+   
 
     public Item getItem() {
         return item;
@@ -103,6 +101,17 @@ public class OrderDetail implements Serializable {
         this.item = item;
     }
 
-
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", itemId=" + itemId +
+                ", item=" + item +
+                ", orderId=" + orderId +
+                ", status=" + status +
+                ", num=" + num +
+                ", total='" + total + '\'' +
+                '}';
+    }
 }
 

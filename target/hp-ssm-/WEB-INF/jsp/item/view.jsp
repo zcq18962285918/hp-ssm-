@@ -133,7 +133,7 @@
         	<a href="javascript:void(0)" id="min_s">-</a>
             <input type="text" value="1" readonly id="t_a">
             <a href="javascript:void(0)" id="add_s">+</a>
-            <font class="font14 c_99" style="margin-left:20px;">库存100件</font>
+            <font class="font14 c_99" style="margin-left:20px;">库存剩余：${obj.kc}</font>
         	<script>
 			$(".likeColor span").click(function(){
 				$(this).addClass("on").siblings().removeClass("on")
@@ -158,6 +158,7 @@
         <div class="buyFor">
         	<a href="${ctx}/sc/exAdd?itemId=${obj.id}" class="mstBuy">收藏</a>
             <a href="javascript:void(0)" class="addCar">加入购物车</a>
+            <a href="javascript:void(0)" class="buy-now">立即购买</a>
         </div>
     </div>
 </div>
@@ -228,6 +229,24 @@ $(".pjYxz a").eq(2).click(function(){
 <script type="text/javascript">
 
 $(function(){
+
+    $(".mstBuy").click(function(){
+        var id = $("#id").val();
+        var num = 1;
+        $.ajax({
+            type: "POST",  //提交方式
+            url: "${ctx}/sc/exAdd?itemId=" + id + "&num=" + num,//路径
+            success: function (result) {//返回数据根据结果进行相应的处理
+                if (result.res == 0) {
+                    alert("请登陆");
+                    window.location.href = "${ctx}/login/uLogin";
+                } else {
+                    alert("收藏成功,等你来哟");
+                }
+            }
+        });
+    });
+    
 	   $(".addCar").click(function(){
 		   var id = $("#id").val();
 		   var num = $("#t_a").val();
@@ -236,30 +255,34 @@ $(function(){
             type : "POST",  //提交方式  
             url : "${ctx}/car/exAdd?itemId="+id+"&num="+num,//路径  
             success : function(result) {//返回数据根据结果进行相应的处理
-            	if (result == 0){
-            		alert("请登陆");
-            		window.location.href = "${ctx}/login/uLogin";
-            	}else{
-                        window.location.href = "${ctx}/car/findBySql";
-            	}
+                if (result.res == 0) {
+                    alert("请登陆");
+                    window.location.href = "${ctx}/login/uLogin";
+                } else {
+                    alert("添加成功,在购物车等你哟");
+                }
             }  
         }); 
 		   /*  window.location.href = "${ctx}/car/exAdd?itemId="+id+"&num="+num; */
 	   });
 	   
-	   //直接提交
+	   //立即购买
 	   $(".buy-now").click(function(){
 		   var id = $("#id").val();
-		   var num = $(".count-input").val();
+		   var num = $("#t_a").val();
 		   var s = "${ctx}/car/js2?itemId="+id+"&num="+num;
 		   $.ajax({  
             type : "POST",  //提交方式  
-            url : "${ctx}/car/js2?itemId="+id+"&num="+num,//路径  
+            url : s,//路径  
             success : function(result) {//返回数据根据结果进行相应的处理
             	if (result.res == 0){
             		alert("请登陆");
             		window.location.href = "${ctx}/login/uLogin";
-            	}else{
+            	}else if (result.res == 3){
+            	    alert("购买失败，请完善你的个人信息");
+                }else if (result.res == 2){
+                    alert("库存不足");
+                } else{
             		window.location.href = "${ctx}/car/view";
             	}
             }  

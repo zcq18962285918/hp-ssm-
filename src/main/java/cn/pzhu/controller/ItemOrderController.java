@@ -234,30 +234,35 @@ public class ItemOrderController extends BaseController {
     /**
      * 7天无条件退货
      */
+    @ResponseBody
     @RequestMapping(value = "/th")
-    public String thById(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String thById(Integer id,Integer orderId, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //得到系统当前时间
         Long time = System.currentTimeMillis();
-        String sql = "select * from order_detail where item_id=" + id;
+        String sql = "select * from order_detail where item_id=" + id + " and order_id="+orderId;
         OrderDetail orderDetail = orderDetailService.getBySqlReturnEntity(sql);
         ItemOrder itemOrder = itemOrderService.getById(orderDetail.getOrderId());
         Date date = itemOrder.getAddTime();
         //计算时间差
         Long addTime = date.getTime();
         Long t = time - addTime;
+        JSONObject js = new JSONObject();
+
+
 
         //判断
         if (t > 7 * 24 * 60 * 60 * 1000) {
             //JOptionPane.showMessageDialog(null, "超出退货期限", null, JOptionPane.PLAIN_MESSAGE);
-
+            js.put("res", 0);
         } else {
             //后台执行退货
             orderDetail.setStatus(1);
             orderDetailService.updateById(orderDetail);
-            
+            js.put("res", 1);
         }
 
-        return "redirect:/itemOrder/my";
+        return js.toJSONString();
+
     }
 
     /**
@@ -328,6 +333,13 @@ public class ItemOrderController extends BaseController {
     public String qx(Integer id, Model model) {
         ItemOrder obj = itemOrderService.load(id);
         obj.setStatus(1);
+        String sql = "select * from order_detail where order_id = "+id;
+        List<OrderDetail> orderDetails = orderDetailService.listBySqlReturnEntity(sql);
+        for (OrderDetail orderDetail : orderDetails){
+            Item item = itemService.load(orderDetail.getItemId());
+            item.setKc(item.getKc()+orderDetail.getNum());
+            itemService.updateById(item);
+        }
         itemOrderService.updateById(obj);
         model.addAttribute("obj", obj);
         return "redirect:/itemOrder/my";
@@ -389,6 +401,12 @@ public class ItemOrderController extends BaseController {
             ids.add(c.getId());
             Car load = carService.load(c.getId());
             to += load.getPrice() * c.getNum();
+            Item item = itemService.load(load.getItemId());
+            if (item.getKc()<c.getNum()){
+                js.put("res", 3);
+                js.put("name", item.getName());
+                return js.toJSONString();
+            }
         }
         ItemOrder order = new ItemOrder();
         order.setStatus(0);
@@ -409,10 +427,12 @@ public class ItemOrderController extends BaseController {
                 de.setOrderId(order.getId());
                 de.setStatus(0);
                 de.setNum(c.getNum());
-                de.setTotal(String.valueOf(c.getNum() * c.getNum()));
+                de.setTotal(String.valueOf(load.getPrice() * c.getNum()));
                 orderDetailService.insert(de);
                 //修改成交数
                 Item load2 = itemService.load(load.getItemId());
+                
+                load2.setKc(load2.getKc() - c.getNum());
                 load2.setGmNum(load2.getGmNum() + c.getNum());
                 itemService.updateById(load2);
                 carService.deleteById(c.getId());

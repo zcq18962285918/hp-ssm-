@@ -61,6 +61,7 @@
                             <th>商品主图</th>
                             <th>商品价格</th>
                             <th>商品折扣</th>
+                            <th>库存</th>
                             <th>商品一级类别</th>
                             <th>商品二级类别</th>
                             <th>操作</th>
@@ -78,6 +79,7 @@
                                 <c:if test="${data.zk ne null}">
                                     <td>${data.zk}</td>
                                 </c:if>
+                                <td>${data.kc}</td>
                                 <td>${data.yiji.name}</td>
                                 <td>${data.erji.name}</td>
                                 <td><a class="link-update"

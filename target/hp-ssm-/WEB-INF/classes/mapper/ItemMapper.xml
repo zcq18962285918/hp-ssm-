@@ -26,6 +26,7 @@
         <result property="val2" column="val2"  jdbcType="VARCHAR"/>
         <result property="val1" column="val1"  jdbcType="VARCHAR"/>
         <result property="zk" column="zk"  jdbcType="INTEGER"/>
+        <result property="kc" column="kc"  jdbcType="INTEGER"/>
         <result property="categoryIdOne" column="category_id_one"  jdbcType="INTEGER"/>
         <result property="categoryIdTwo" column="category_id_two"  jdbcType="INTEGER"/>
         <result property="isDelete" column="isDelete"  jdbcType="INTEGER"/>
@@ -57,6 +58,7 @@
            val2,
            val1,
            zk,
+           kc,
            category_id_one,
            category_id_two,
            isDelete
@@ -83,6 +85,7 @@
         	#{val2} ,
         	#{val1} ,
         	#{zk} ,
+        	#{kc},
         	#{categoryIdOne} ,
         	#{categoryIdTwo} ,
         	#{isDelete} 
@@ -143,6 +146,9 @@
 	        </if>
 		    <if test="zk != null" >
 	            zk = #{zk} ,
+	        </if>
+		    <if test="kc != null" >
+	            kc = #{kc} ,
 	        </if>
 		    <if test="categoryIdOne != null" >
 	            category_id_one = #{categoryIdOne} ,
@@ -213,6 +219,9 @@
 	        </if>
 	        <if test="zk != null " >
 	            and zk =#{zk}
+	        </if>
+	        <if test="kc != null " >
+	            and kc =#{kc}
 	        </if>
 	        <if test="categoryIdOne != null " >
 	            and category_id_one =#{categoryIdOne}
@@ -516,6 +525,9 @@
 		    <if test="item.zk != null" >
 	        zk = #{item.zk},
 	        </if>
+			<if test="item.kc != null" >
+				kc = #{item.kc},
+			</if>
 		    <if test="item.categoryIdOne != null" >
 	        category_id_one = #{item.categoryIdOne},
 	        </if>

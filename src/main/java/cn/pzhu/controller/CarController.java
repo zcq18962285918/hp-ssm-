@@ -1,17 +1,14 @@
 package cn.pzhu.controller;
 
 import cn.pzhu.base.BaseController;
-import cn.pzhu.po.Car;
-import cn.pzhu.po.CarDto;
-import cn.pzhu.po.Item;
-import cn.pzhu.service.AddressService;
-import cn.pzhu.service.CarService;
-import cn.pzhu.service.ItemService;
+import cn.pzhu.po.*;
+import cn.pzhu.service.*;
 import cn.pzhu.utils.Pager;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -21,7 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/car")
@@ -294,6 +295,13 @@ public class CarController extends BaseController {
     }
 
 
+    @Autowired
+    UserService userService;
+    @Autowired
+    ItemOrderService itemOrderService;
+    @Autowired
+    OrderDetailService orderDetailService;
+
     @RequestMapping(value = "/js2")
     @ResponseBody
     public String js2(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -304,23 +312,70 @@ public class CarController extends BaseController {
             return js.toJSONString();
         }
         Integer userId = Integer.valueOf(attribute.toString());
-        car.setUserId(userId);
         Item load = itemService.load(car.getItemId());
+        if (load.getKc()<car.getNum()){
+            js.put("res", 3);
+            return js.toJSONString();
+        }
+        User user = userService.load(userId);
+        Integer kc = load.getKc();
         String price = load.getPrice();
-        Long valueOf = Long.valueOf(price);
+        Double valueOf = Double.valueOf(price);
         Integer num = car.getNum();
-        Long t = valueOf * num;
-        car.setTotal(t.toString());
-        carService.insert(car);
+        Double zk = load.getZk() == null ? 1 : load.getZk() * 0.1;
+        Double t = valueOf * num * zk;
         String key = "car_" + userId;
-        List<CarDto> list = new ArrayList<CarDto>();
         CarDto d = new CarDto();
-        d.setId(car.getId());
-        d.setNum(car.getNum());
-        list.add(d);
-        request.getSession().setAttribute(key, list);
+        d.setId(userId);
+        d.setNum(num);
+        request.getSession().setAttribute(key, d);
+        load.setKc(load.getKc()-car.getNum());
+        itemService.updateById(load);
+        if (StringUtils.isEmpty(user.getAddress())) {
+            js.put("res", 2);
+            return js.toJSONString();
+        }
+
+        ItemOrder order = new ItemOrder();
+        order.setStatus(0);
+        order.setCode(getOrderNo());
+        order.setIsDelete(0);
+        order.setTotal(String.valueOf(t));
+        order.setUserId(userId);
+        order.setAddTime(new Date());
+        int id = itemOrderService.insert(order);
+        
+        OrderDetail de = new OrderDetail();
+        de.setItemId(car.getItemId());
+        de.setOrderId(order.getId());
+        de.setStatus(0);
+        de.setNum(car.getNum());
+        de.setTotal(String.valueOf(t));
+        orderDetailService.insert(de);
+        //修改成交数
+        load.setGmNum(load.getGmNum() + car.getNum());
+        itemService.updateById(load);
+                
         js.put("res", 1);
+        js.put("id", order.getId());
+        js.put("code", order.getCode());
         return js.toJSONString();
+    }
+
+    private static String date;
+    private static long orderNum = 0l;
+
+    public static synchronized String getOrderNo() {
+        String str = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+        if (date == null || !date.equals(str)) {
+            date = str;
+            orderNum = 0l;
+        }
+        orderNum++;
+        long orderNo = Long.parseLong((date)) * 10000;
+        orderNo += orderNum;
+        ;
+        return orderNo + "";
     }
 
     /**
@@ -381,10 +436,6 @@ public class CarController extends BaseController {
         //carService.update(load);
         return "redirect:/car/findBySql.action";
     }
-
-    // --------------------------------------- 华丽分割线 ------------------------------
-    // --------------------------------------- 【下面是ajax操作的方法。】 ------------------------------
-
     /*********************************查询列表【不分页】***********************************************/
 
     /**

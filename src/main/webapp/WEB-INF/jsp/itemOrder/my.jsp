@@ -34,12 +34,6 @@
 </div>
 <div class="width100 hidden_yh" style="background:#f0f0f0;padding-top:34px;padding-bottom:34px;">
     <div class="width1200 hidden_yh center_yh">
-        <div id="vipNav">
-            <a href="${ctx}/user/view">个人信息</a>
-            <a href="${ctx}/itemOrder/my" class="on">我的订单</a>
-            <a href="${ctx}/sc/findBySql">商品收藏</a>
-            <a href="${ctx}/login/pass">修改密码</a>
-        </div>
         <div id="vipRight">
             <div style="width:938px;border:1px solid #ddd;background:#fff;">
                 <!--导航-->
@@ -367,7 +361,8 @@
                                                class="onfff block_yh tcenter font16 onHoverr"
                                                style="margin-top:10px;padding:6px;">去评价</a><br>
                                             <c:if test="${chil.status == 0}">
-                                            <a href="${ctx}/itemOrder/th?id=${chil.itemId}"
+                                            <a href="javaScript:void(0)"
+                                               onclick="th(${chil.orderId},${chil.itemId})" 
                                                class="onfff block_yh tcenter font16 onHoverr"
                                                style="margin-top:10px;padding:6px;">退货</a>
                                             </c:if>
@@ -423,14 +418,30 @@
     </div>
 </div>
 <script>
-    $(".mG").click(function () {
-        $(this).parent().parent().remove()
-    })
-    $("#navLt span").click(function () {
-        var t = $(this).index();
-        $(this).addClass("slect").siblings().removeClass("slect")
-        $(".hhD").eq(t).css({display: "block"}).siblings(".hhD").css({display: "none"});
-    })
+    $(function(){
+        $(".mG").click(function () {
+            $(this).parent().parent().remove()
+        })
+        $("#navLt span").click(function () {
+            var t = $(this).index();
+            $(this).addClass("slect").siblings().removeClass("slect")
+            $(".hhD").eq(t).css({display: "block"}).siblings(".hhD").css({display: "none"});
+        })
+    });
+    function th(orderId,id) {
+        $.ajax({
+            type : "POST",  //提交方式  
+            url : "${ctx}/itemOrder/th?id="+id+"&orderId="+orderId,//路径  
+            success : function(result) {//返回数据根据结果进行相应的处理
+                if (result.res == 0) {
+                    alert("超过退货期限，不能退货")
+                }else{
+                    alert("退货中");
+                    window.location.href="${ctx}/itemOrder/my"
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>

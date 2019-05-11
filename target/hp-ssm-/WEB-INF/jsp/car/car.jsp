@@ -296,6 +296,8 @@
                     window.location.href = "${ctx}/login/uLogin";
                 } else if (result.res == 2) {
                     alert("请编辑地址");
+                }else if (result.res == 3){
+                    alert(result.name+"库存不足");
                 } else {
                     window.location.href = "${ctx}/car/view?code=" + result.code;
                 }

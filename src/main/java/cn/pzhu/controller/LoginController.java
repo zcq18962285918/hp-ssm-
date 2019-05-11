@@ -118,6 +118,12 @@ public class LoginController extends BaseController {
 
         //折扣
         List<Item> zks = itemService.listBySqlReturnEntity("SELECT * FROM item WHERE 1=1 and isDelete =0 and zk is not null order by zk desc limit 0,10");
+        for (Item item1 : zks){
+            Double zk = item1.getZk()*0.1;
+            Double price = Double.valueOf(item1.getPrice());
+            Double zkPrice = price * zk;
+            item1.setZkPrice(String.format("%.1f", zkPrice));
+        }
         model.addAttribute("zks", zks);
 
         //做推荐

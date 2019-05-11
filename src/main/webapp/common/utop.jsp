@@ -16,7 +16,10 @@
             
              <a href="${ctx}/car/findBySql">我的购物车</a>
              <b></b>
-            
+                <a href="${ctx}/sc/findBySql">我的收藏</a>
+                <b></b>
+                <a href="${ctx}/itemOrder/my">我的订单</a>
+                <b></b>
             </c:if>
             <c:if test="${userId == null }">
             <a href="${ctx}/login/uLogin">登录</a>

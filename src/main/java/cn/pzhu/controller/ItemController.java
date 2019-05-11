@@ -340,7 +340,6 @@ public class ItemController extends BaseController {
     public String view(Integer id, Model model) {
         Item obj = itemService.load(id);
         model.addAttribute("obj", obj);
-        //查询是否收藏
         return "item/view";
     }
 
@@ -388,7 +387,7 @@ public class ItemController extends BaseController {
                 }
             }
         }
-
+        
         item.setGmNum(0);
         item.setIsDelete(0);
         item.setScNum(0);

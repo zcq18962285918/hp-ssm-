@@ -55,6 +55,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <th><i class="require-red">*</i>商品数量：</th>
+                            <td>
+                                <input class="common-text required" id="title3" name="kc" size="50" value=""
+                                       type="text">
+                            </td>
+                        </tr>
+                        <tr>
                             <th><i class="require-red">*</i>商品折扣：</th>
                             <td>
                                 <input class="common-text required" id="title" name="zk" size="50" value="" type="text">

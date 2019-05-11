@@ -1,11 +1,11 @@
 package cn.pzhu.po;
 
-import java.util.*;
 import java.io.Serializable;
+import java.util.List;
 
 public class Item implements Serializable {
-    private static final long serialVersionUID = 3148176768559230877L;
 
+    private static final long serialVersionUID = 4975471253159971832L;
     /**
      * @Fields Id : id
      */
@@ -66,8 +66,27 @@ public class Item implements Serializable {
      * @Fields Type :
      */
     private Integer type;
+    
+    private Integer kc;
 
+    public Integer getKc() {
+        return kc;
+    }
 
+    public void setKc(Integer kc) {
+        this.kc = kc;
+    }
+
+    private String zkPrice;
+
+    public String getZkPrice() {
+        return this.zkPrice;
+    }
+
+    public void setZkPrice(String zkPrice) {
+        this.zkPrice = zkPrice;
+    }
+    
     private String val3;
     /**
      * @Fields Val2 : 值2
@@ -288,11 +307,35 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Item [id=" + id + ", name=" + name + ", price=" + price + ", scNum=" + scNum + ", gmNum=" + gmNum
-                + ", url1=" + url1 + ", url2=" + url2 + ", url3=" + url3 + ", url4=" + url4 + ", url5=" + url5 + ", ms="
-                + ms + ", pam1=" + pam1 + ", pam2=" + pam2 + ", pam3=" + pam3 + ", type=" + type + ", val3=" + val3
-                + ", val2=" + val2 + ", val1=" + val1 + ", zk=" + zk + ", categoryIdOne=" + categoryIdOne
-                + ", categoryIdTwo=" + categoryIdTwo + ", isDelete=" + isDelete + "]";
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", scNum=" + scNum +
+                ", gmNum=" + gmNum +
+                ", url1='" + url1 + '\'' +
+                ", url2='" + url2 + '\'' +
+                ", url3='" + url3 + '\'' +
+                ", url4='" + url4 + '\'' +
+                ", url5='" + url5 + '\'' +
+                ", ms='" + ms + '\'' +
+                ", pam1='" + pam1 + '\'' +
+                ", pam2='" + pam2 + '\'' +
+                ", pam3='" + pam3 + '\'' +
+                ", type=" + type +
+                ", kc=" + kc +
+                ", zkPrice='" + zkPrice + '\'' +
+                ", val3='" + val3 + '\'' +
+                ", val2='" + val2 + '\'' +
+                ", val1='" + val1 + '\'' +
+                ", zk=" + zk +
+                ", yiji=" + yiji +
+                ", categoryIdOne=" + categoryIdOne +
+                ", categoryIdTwo=" + categoryIdTwo +
+                ", erji=" + erji +
+                ", isDelete=" + isDelete +
+                ", pls=" + pls +
+                '}';
     }
 
     public ItemCategory getErji() {

@@ -76,7 +76,6 @@
 <div class="width1200 center_yh hidden_yh">
 	<div class="width100" style="height:45px;line-height:45px;border-bottom:2px solid #dd4545;margin-top:20px;">
     	<font class="left_yh font20">折扣大促销</font>
-        <a href="#" class="right_yh c_33 font16">更多»</a>
     </div>
     <div class="width100 hidden_yh" style="height:480px;">
     	
@@ -86,7 +85,8 @@
              <c:forEach items="${zks}" var="data" varStatus="l">
 	             <a href="${ctx}/item/view?id=${data.id}">
 	            	<h3 class="yihang c_33 font14 font100" style="padding-left:10px;padding-right:10px;margin-top:10px;">${data.name}</h3>
-	                <p class="red font14" style="padding-left:10px;">￥${data.price}</p>
+                     <p class="red font14" style="padding-left:15px;">促销价：￥${data.zkPrice}</p>
+                     <p class="c_99 font14" style="padding-left:15px;}">原价：￥${data.price}</p>
 	                <img src="${data.url1}" width="105" height="118" style="margin:0 auto">
 	            </a>
              </c:forEach>
@@ -98,14 +98,15 @@
 <div class="width1200 center_yh hidden_yh">
 	<div class="width100" style="height:45px;line-height:45px;border-bottom:2px solid #dd4545;margin-top:20px;">
     	<font class="left_yh font20">热门商品</font>
-        <a href="#" class="right_yh c_33 font16">更多»</a>
+        <%--<a href="#" class="right_yh c_33 font16">更多»</a>--%>
     </div>
     <div class="width100 hidden_yh" style="height:480px;">
         <div class="normalPic">
         	 <c:forEach items="${rxs}" var="data" varStatus="l">
 	             <a href="${ctx}/item/view?id=${data.id}">
 	            	<h3 class="yihang c_33 font14 font100" style="padding-left:10px;padding-right:10px;margin-top:10px;">${data.name}</h3>
-	                <p class="red font14" style="padding-left:10px;">￥${data.price}</p>
+	                <p class="red font14" style="padding-left:15px;">￥${data.price}</p>
+                     <p class="red font14" style="padding-left:15px;">已售${data.gmNum}</p>
 	                <img src="${data.url1}" width="105" height="118" style="margin:0 auto">
 	            </a>
              </c:forEach>

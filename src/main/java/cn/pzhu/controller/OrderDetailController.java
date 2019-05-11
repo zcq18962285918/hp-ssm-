@@ -1,7 +1,9 @@
 package cn.pzhu.controller;
 
 import cn.pzhu.base.BaseController;
+import cn.pzhu.po.Item;
 import cn.pzhu.po.OrderDetail;
+import cn.pzhu.service.ItemService;
 import cn.pzhu.service.OrderDetailService;
 import cn.pzhu.utils.Pager;
 import com.alibaba.fastjson.JSONObject;
@@ -208,14 +210,30 @@ public class OrderDetailController extends BaseController {
         return "orderDetail/add";
     }
 
+    @Autowired
+    ItemService itemService;
 
     @RequestMapping(value = "/th")
     public String th(Integer id, Model model) {
         OrderDetail obj = orderDetailService.load(id);
+        Item item = itemService.load(obj.getItemId());
+        item.setKc(item.getKc()+obj.getNum());
+        itemService.update(item);
         obj.setStatus(2);
         orderDetailService.updateById(obj);
         model.addAttribute("obj", obj);
-        return "redirect:/orderDetail/ulist";
+        return "redirect:/orderDetail/ths";
+    }
+
+    //跳转到退货管理页面
+    @RequestMapping(value = "/ths")
+    public String ths(Model model) {
+        OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setStatus(1);
+        String sql = "SELECT * FROM order_detail WHERE 1=1 and status like '%" + 1 + "%'";
+        Pager<OrderDetail> orderDetailPager = orderDetailService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers", orderDetailPager);
+        return "orderDetail/ulist";
     }
 
     /**

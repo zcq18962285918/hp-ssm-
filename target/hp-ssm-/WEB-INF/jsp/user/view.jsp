@@ -36,8 +36,6 @@
     <div class="width1200 hidden_yh center_yh">
         <div id="vipNav">
             <a href="${ctx}/user/view" class="on">个人信息</a>
-            <a href="${ctx}/itemOrder/my">我的订单</a>
-            <a href="${ctx}/sc/findBySql">商品收藏</a>
             <a href="${ctx}/login/pass" class="">修改密码</a>
         </div>
         <div id="vipRight">

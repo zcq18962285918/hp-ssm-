@@ -48,7 +48,7 @@
             <input type="submit" value="提交" class="ipt_tj" style="width:295px;height:44px;margin-left:505px;">
         </div>
         
-        </form>
+    </form>
     </div>
 </div>
     

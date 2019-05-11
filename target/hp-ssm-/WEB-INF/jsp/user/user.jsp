@@ -46,20 +46,14 @@
                         <tr>
                             <th>用户名</th>
                             <th>手机号</th>
-                            <th>真实姓名</th>
                             <th>性别</th>
-                            <th>邮箱</th>
-                            <th>地址</th>
                         </tr>
                         
                   <c:forEach items="${pagers.datas}" var="data" varStatus="l">
 	                  <tr>
 	                    <td>${data.userName}</td>
 	                    <td>${data.phone}</td>
-	                    <td >${data.realName} </td>
 	                    <td>${data.sex}</td>
-	                    <td>${data.email}</td>
-	                    <td>${data.address}</td>
 	                </tr>
                   </c:forEach>
                   
